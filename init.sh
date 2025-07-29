@@ -56,7 +56,7 @@ echo "📥 Cloning Git repository..."
 
 ### [2] Git 저장소 클론
 if [ ! -d "$DEV_VM_DIR" ]; then
-  git clone -b "$GIT_BRANCH" "$GIT_URL" DEV_VM_DIR
+  git clone -b "$GIT_BRANCH" "$GIT_URL" "$DEV_VM_DIR"
 else
   echo "📦 Repo exists, pulling latest..."
   cd $DEV_VM_DIR && git pull && cd ..
@@ -69,7 +69,7 @@ cd $DEV_VM_DIR
 echo "🚀 Starting Portainer Agent..."
 cd portainer-agent
 export PORTAINER_AGENT_PORT=9001
-docker-compose up -d
+docker compose up -d
 
 echo "✅ Portainer Agent started on :$PORTAINER_AGENT_PORT"
 # echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_AGENT_PORT"
