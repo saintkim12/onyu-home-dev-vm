@@ -5,8 +5,15 @@ echo "🔁 Restarting Docker + Portainer Agent..."
 
 service docker restart
 
+cd "$DEV_VM_DIR/portainer"
+docker-compose down
+docker-compose up -d
+
+echo "✅ Portainer restarted on :$PORTAINER_PORT"
+echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_PORT"
+
 cd "$DEV_VM_DIR/portainer-agent"
 docker compose down
 docker compose up -d
 
-echo "✅ Portainer Agent re-started on :$PORTAINER_AGENT_PORT"
+echo "✅ Portainer Agent restarted on :$PORTAINER_AGENT_PORT"

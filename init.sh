@@ -48,9 +48,14 @@ echo "🔌 Enabling and starting Docker service..."
 sudo systemctl enable docker
 sudo systemctl start docker
 
+# "docker-compose" 명령어를 위한 docker-compose 설치
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 echo "✅ Docker installed successfully!"
 docker --version
 docker compose version
+# docker-compose --version
 
 echo "📥 Cloning Git repository..."
 
@@ -74,8 +79,16 @@ docker compose up -d
 echo "✅ Portainer Agent started on :$PORTAINER_AGENT_PORT"
 # echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_AGENT_PORT"
 
+### [5] Portainer Docker 컨테이너 실행
+echo "🚀 Starting Portainer..."
+cd portainer
+export PORTAINER_PORT=9000
+docker-compose up -d
+
+echo "✅ Portainer started on :$PORTAINER_PORT"
+echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_PORT"
+
 echo ""
 echo "📝 Next Step:"
 echo "1. Open Portainer UI"
-echo "2. Add this Portainer Agent in Environments"
-
+echo "2. Set Stack and Run Container"
