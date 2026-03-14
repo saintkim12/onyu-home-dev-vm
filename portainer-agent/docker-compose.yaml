@@ -1,4 +1,4 @@
-version: '3'
+# version: '3'
 services:
   portainer:
     image: portainer/agent:latest
@@ -7,8 +7,4 @@ services:
       - '${PORTAINER_AGENT_PORT:-9001}:9001'
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_agent_data:/data
     restart: always
-
-volumes:
-  portainer_agent_data:
