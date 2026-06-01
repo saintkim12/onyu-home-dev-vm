@@ -3,6 +3,9 @@ services:
   watchtower:
     image: containrrr/watchtower
     container_name: watchtower
+    environment:
+      - REPO_USER=${GITHUB_USER}  # GitHub 유저명
+      - REPO_PASS=${GITHUB_TOKEN}  # PAT (Personal Access Token)
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:

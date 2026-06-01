@@ -7,6 +7,8 @@ services:
     ports:
       - '${AUTO_RESERVER_CALENDAR_PORT:-3000}:3000'
     restart: unless-stopped
+    volumes:
+      - '${APP_STATE_DIR}:/app/data'
     environment:
       # Node.js 환경 변수
       - NODE_ENV=production
